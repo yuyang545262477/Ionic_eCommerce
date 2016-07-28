@@ -21,7 +21,7 @@
             <ion-item>4</ion-item>
             <ion-item>5</ion-item>
             <ion-item>6</ion-item>
-            <ion-item class="item-divider">100</ion-item>
+            <ion-item class="item-divider" ng-repeat="cat in mainCategories">{{cat.name}}</ion-item>
         </ion-list>
     </ion-side-menu>
 </ion-side-menus>
