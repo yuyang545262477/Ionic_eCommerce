@@ -17,6 +17,10 @@
     <ion-side-menu>
         <ion-list>
             <img src="../img/menu_banner.jpg" alt="logo" style="width: 100%; height: auto">
+            <ion-item>login</ion-item>
+            <ion-item>signIn</ion-item>
+            <ion-item menu-close ui-sref="app.browser">browser</ion-item>
+            <ion-item>Logout</ion-item>
             <ion-item ng-repeat="cat in mainCategories">{{cat.name}}</ion-item>
         </ion-list>
     </ion-side-menu>

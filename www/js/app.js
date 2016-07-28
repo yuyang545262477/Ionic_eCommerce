@@ -20,7 +20,18 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controller'])
                         controller: 'HomeCtrl'
                     }
                 }
+            })
+            .state('app.browser', {
+                url: '/browser',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/browser.html',
+                        controller: "BrowserCtrl"
+                    }
+                }
             });
+
+
         $urlRouterProvider.otherwise('/app/home');
     })
     .run(function ($ionicPlatform) {
