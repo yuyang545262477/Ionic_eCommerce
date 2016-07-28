@@ -45,7 +45,7 @@ angular.module('starter.controller', [])
                     $scope.products.push(ele);
                 });
                 $scope.$broadcast('scroll.infiniteScrollComplete');
-                if (angular.fromJson(res).products.leng < 10) {
+                if (angular.fromJson(res).products.length < 10) {
                     $scope.hasMore = false;
                     console.log('no more products');
                     // return false;
