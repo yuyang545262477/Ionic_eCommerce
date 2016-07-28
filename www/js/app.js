@@ -3,44 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.services'])
-    .config(function ($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state('app', {
-                url: '/app',
-                templateUrl: 'templates/menu.html',
-                controller: 'AppCtrl',
-                abstract: true
-            })
-            .state('app.home', {
-                url: '/home',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/home.html',
-                        controller: 'HomeCtrl'
-                    }
-                }
-            });
-        $urlRouterProvider.otherwise('app/home');
-    })
-    .controller('AppCtrl', function ($scope,WC) {
-        var WooCommerce =WC.WC();
-        WooCommerce.get('products/categories',function (err,data,res) {
-            console.log(res);
-            $scope.categories = (JSON.parse(res)).product_categories;
-            $scope.mainCategories =[];
-            $scope.categories.forEach(function (element) {
-                if(element.parent === 0){
-                    $scope.mainCategories.push(element);
-                }
-            });
-        })
-    })
-    .controller('HomeCtrl', function () {
-
-    })
-
-    .run(function ($ionicPlatform) {
+var App=angular.module('starter', ['ionic', 'starter.services']);
+    App.run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -56,4 +20,43 @@ angular.module('starter', ['ionic','starter.services'])
                 StatusBar.styleDefault();
             }
         });
-    });
+    })
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app', {
+                url: '/app',
+                abstract: true,
+                templateUrl: 'templates/menu.html',
+                controller: 'AppCtrl'
+            })
+            .state('app.home', {
+                url: '/home',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/home.html',
+                        controller: 'HomeCtrl'
+                    }
+                }
+            });
+        $urlRouterProvider.otherwise('/app/home');
+    })
+
+    .controller('AppCtrl', function ($scope, WC) {
+        var WooCommerce = WC.WC();
+        WooCommerce.get('products/categories', function (err, data, res) {
+            // console.log(res);
+            $scope.categories = (JSON.parse(res)).product_categories;
+            $scope.mainCategories = [];
+            $scope.categories.forEach(function (element) {
+                if (element.parent === 0) {
+                    $scope.mainCategories.push(element);
+                }
+            });
+        })
+    })
+    .controller('HomeCtrl', ['$scope',function ($scope) {
+        $scope.name = 'hello';
+        console.log($scope.name);
+    }])
+
+;

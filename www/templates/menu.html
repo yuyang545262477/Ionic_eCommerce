@@ -12,16 +12,12 @@
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu>
         <ion-list>
-            <ion-item>1</ion-item>
-            <ion-item>2</ion-item>
-            <ion-item>3</ion-item>
-            <ion-item>4</ion-item>
-            <ion-item>5</ion-item>
-            <ion-item>6</ion-item>
-            <ion-item class="item-divider" ng-repeat="cat in mainCategories">{{cat.name}}</ion-item>
+            <img src="../img/menu_banner.jpg" alt="logo" style="width: 100%; height: auto">
+            <ion-item ng-repeat="cat in mainCategories">{{cat.name}}</ion-item>
         </ion-list>
     </ion-side-menu>
 </ion-side-menus>
