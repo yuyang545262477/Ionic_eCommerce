@@ -13,13 +13,13 @@
         </ion-slide-box>
 
 
-        <ion-list class="list-card">
+        <ion-list class="list-card ">
             <ion-item class="item-button-right">
                 Shop By Category
                 <button class="button button-small button-clear button-assertive">View All</button>
             </ion-item>
-            <ion-item class="item-avatar-left" ng-repeat="cat in mainCategories">
-                <img src="{{cat.image||'http://loremflickr/64/64'+cat.name}}" alt="{{cat.name}}"/>
+            <ion-item class="item-avatar-left " ng-repeat="cat in mainCategories">
+                <img ng-src="{{cat.image||'http://loremflickr/64/64'+cat.name}}" alt="{{cat.name}}"/>
                 <h2>{{cat.name}}</h2>
                 <p>{{cat.description}}</p>
             </ion-item>
